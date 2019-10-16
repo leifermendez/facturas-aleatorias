@@ -1,4 +1,11 @@
 <style>
+    @import url('https://fonts.googleapis.com/css?family=Rokkitt&display=swap');
+
+    @page {
+        margin: 0px 0px 0px 0px !important;
+        padding: 0px 0px 0px 0px !important;
+    }
+
     .clearfix:after {
         content: "";
         display: table;
@@ -10,13 +17,22 @@
         text-decoration: underline;
     }
 
+    .logo-circle {
+        background-color: #92bfe8;
+        width: 5em !important;
+        height: 5em !important;
+        color: white;
+        line-height: 2em !important;
+        border: solid 1px white !important;
+    }
+
     body {
+        margin: 0;
         position: relative;
-        color: #001028;
+        color: #2d3031 !important;
         background: #FFFFFF;
-        font-family: Arial, sans-serif;
+        font-family: 'Rokkitt', serif;
         font-size: 12px;
-        font-family: Arial;
     }
 
     header {
@@ -33,39 +49,44 @@
         width: 90px;
     }
 
-    h1 {
-        border-top: 1px solid #5D6975;
-        border-bottom: 1px solid #5D6975;
-        color: #5D6975;
-        font-size: 2.4em;
-        line-height: 1.4em;
+    .header {
+        border-top: 0px solid #5D6975;
+        border-bottom: 1px solid #e0e0e0;
+        font-size: 1.3em;
         font-weight: normal;
         text-align: center;
         margin: 0 0 20px 0;
-        background: url(dimension.png);
+        background-color: transparent;
+        padding: 0rem;
     }
 
     #project {
         float: left;
+        margin-left: 20px;
     }
 
     #project span {
-        color: #5D6975;
         text-align: left;
         width: 52px;
-        margin-right: 10px;
+        margin-right: 25px;
         display: inline-block;
         font-size: 0.8em;
     }
 
     #company {
         float: right;
+        margin-right: 20px;
 
     }
 
     #project div,
     #company div {
         white-space: nowrap;
+    }
+
+    #project div, #company div {
+        border-bottom: solid 1px #f2f3f5;
+        padding: 5px;
     }
 
     table {
@@ -76,7 +97,7 @@
     }
 
     table tr:nth-child(2n-1) td {
-        background: #F5F5F5;
+        background: transparent;
     }
 
     table th,
@@ -86,8 +107,7 @@
 
     table th {
         padding: 5px 20px;
-        color: #5D6975;
-        border-bottom: 1px solid #C1CED9;
+        border-bottom: 1px solid #e2e2e2;
         white-space: nowrap;
         font-weight: normal;
     }
@@ -114,7 +134,7 @@
     }
 
     table td.grand {
-        border-top: 1px solid #5D6975;;
+        border-top: 0px solid #5D6975;;
     }
 
     #notices .notice {
@@ -134,24 +154,38 @@
     }
 </style>
 <div class="clearfix">
-    <h1><?php echo $data['vendor']['company_name'] ?> <span style="font-size: 12px"><?php echo $data['vendor']['company_rif'] ?></span>
-    </h1>
+    <div class="header">
+        <table style="width: 100%;margin: 0">
+            <tr>
+                <td style="background-color: transparent;width: 50%;text-align: left">
+                    <?php echo $data['vendor']['company_init'] ?>
+                </td>
+                <td style="background-color: transparent;width: 50%;font-size: .7rem;">
+                    <b><?php echo $data['vendor']['company_name'] ?></b><br>
+                    <span><?php echo $data['vendor']['company_address'] ?></span><br>
+                    <span><?php echo $data['vendor']['company_phone'] ?></span>
+                </td>
+            </tr>
+        </table>
+    </div>
+
     <div id="company" class="clearfix">
         <div><b>Factuara Nº</b>: <?php echo $data['vendor']['invoice_number'] ?></div>
-        <div><?php echo $data['vendor']['company_name'] ?></div>
-        <div><?php echo $data['vendor']['company_address'] ?></div>
-        <div><?php echo $data['vendor']['company_email'] ?></div>
+
     </div>
     <div id="project">
         <div><span>Razon Social:</span> <?php echo $data['customer']['customer_name'] ?></div>
-        <div><span>RIF:</span>  <?php echo $data['customer']['customer_rif'] ?></div>
+        <div><span>RIF:</span> <?php echo $data['customer']['customer_rif'] ?></div>
         <div><span>Dirección:</span> <?php echo $data['customer']['customer_address'] ?></div>
-        <div><span>Email:</span> <a href="mailto:john@example.com"><?php echo $data['customer']['customer_email'] ?></a></div>
+        <div><span>Email:</span> <a href="mailto:john@example.com"><?php echo $data['customer']['customer_email'] ?></a>
+        </div>
         <div><span>Fecha</span> <?php echo $data['vendor']['date'] ?></div>
     </div>
 </div>
-<div>
-    <table>
+<div style="
+    margin-top: 30px;
+">
+    <table style="font-size: 12px;">
         <thead>
         <tr>
             <th class="desc">Descripción</th>

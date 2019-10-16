@@ -133,20 +133,22 @@
     }
 </style>
 <div class="clearfix">
-    <h1><?php echo $data['company_header'] ?> <span style="font-size: 12px"><?php echo $data['company_rif'] ?></span>
+    <h1><?php $data = array_merge($data, []);
+        echo $data['vendor']['company_name'] ?> <span
+                style="font-size: 12px"><?php echo $data['vendor']['company_rif'] ?></span>
     </h1>
     <div id="company" class="clearfix">
-        <div><b>Factuara Nº</b>: <?php echo $data['company_number_invoice'] ?></div>
-        <div><?php echo $data['company_number_invoice'] ?></div>
-        <div><?php echo $data['company_address'] ?></div>
-        <div><?php echo $data['company_phone'] ?></div>
+        <div><b>Factuara Nº</b>: <?php echo $data['vendor']['invoice_number'] ?></div>
+        <div><?php echo $data['vendor']['company_address'] ?></div>
+        <div><?php echo $data['vendor']['company_phone'] ?></div>
     </div>
     <div id="project">
-        <div><span>Razon Social:</span> <?php echo $data['customer_name'] ?></div>
-        <div><span>RIF:</span> <?php echo $data['customer_rif'] ?></div>
-        <div><span>Dirección:</span>  <?php echo $data['customer_address'] ?></div>
-        <div><span>Email:</span> <a href="mailto:john@example.com"> <?php echo $data['customer_email'] ?></a></div>
-        <div><span>Fecha</span>  <?php echo $data['customer_date'] ?></div>
+        <div><span>Razon Social:</span> <?php echo $data['customer']['customer_name'] ?></div>
+        <div><span>RIF:</span> <?php echo $data['customer']['customer_rif'] ?></div>
+        <div><span>Dirección:</span> <?php echo $data['customer']['customer_address'] ?></div>
+        <div><span>Email:</span> <a
+                    href="mailto:john@example.com"> <?php echo $data['customer']['customer_email'] ?></a></div>
+        <div><span>Fecha</span> <?php echo $data['vendor']['date'] ?></div>
     </div>
 </div>
 <div style="
@@ -163,23 +165,23 @@
         </thead>
         <tbody>
         <tr>
-            <td class="desc">Creating a recognizable design solution based on the company's existing visual identity
+            <td class="desc"><?php echo $data['item']['title']?>
             </td>
-            <td class="unit">$40.00</td>
-            <td class="qty">26</td>
-            <td class="total">$1,040.00</td>
+            <td class="unit"><?php echo $data['item']['price']?></td>
+            <td class="qty"><?php echo $data['item']['qty']?></td>
+            <td class="total"><?php echo $data['item']['price_total']?></td>
         </tr>
         <tr>
-            <td colspan="3">SUBTOTAL</td>
-            <td class="total">$5,200.00</td>
+            <td colspan="3">Sub-Total</td>
+            <td class="total"><?php echo $data['item']['price_total']?></td>
         </tr>
         <tr>
             <td colspan="3">TAX 12%</td>
-            <td class="total">$1,300.00</td>
+            <td class="total"><?php echo $data['item']['tax']?></td>
         </tr>
         <tr>
-            <td colspan="3" class="grand total">GRAND TOTAL</td>
-            <td class="grand total">$6,500.00</td>
+            <td colspan="3" class="grand total">TOTAL</td>
+            <td class="grand total"><?php echo $data['item']['price_total']?></td>
         </tr>
         </tbody>
     </table>

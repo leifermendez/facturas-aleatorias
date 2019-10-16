@@ -1,4 +1,11 @@
 <style>
+    @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+
+    @page {
+        margin: 0px 0px 0px 0px !important;
+        padding: 0px 0px 0px 0px !important;
+    }
+
     .clearfix:after {
         content: "";
         display: table;
@@ -10,13 +17,22 @@
         text-decoration: underline;
     }
 
+    .logo-circle {
+        background-color: #92bfe8;
+        width: 5em !important;
+        height: 5em !important;
+        color: white;
+        line-height: 2em !important;
+        border: solid 1px white !important;
+    }
+
     body {
+        margin: 0;
         position: relative;
-        color: #001028;
+        color: #2d3031 !important;
         background: #FFFFFF;
-        font-family: Arial, sans-serif;
+        font-family: 'Source Sans Pro', sans-serif;
         font-size: 12px;
-        font-family: Arial;
     }
 
     header {
@@ -33,39 +49,44 @@
         width: 90px;
     }
 
-    h1 {
-        border-top: 1px solid #5D6975;
-        border-bottom: 1px solid #5D6975;
-        color: #5D6975;
-        font-size: 2.4em;
-        line-height: 1.4em;
+    .header {
+        border-top: 0px solid #5D6975;
+        border-bottom: 0px dotted #abc0d4;
+        font-size: 1.3em;
         font-weight: normal;
         text-align: center;
         margin: 0 0 20px 0;
-        background: url(dimension.png);
+        background-color: #d8eeff;
+        padding: 2rem;
     }
 
     #project {
         float: left;
+        margin-left: 20px;
     }
 
     #project span {
-        color: #5D6975;
         text-align: left;
         width: 52px;
-        margin-right: 10px;
+        margin-right: 25px;
         display: inline-block;
         font-size: 0.8em;
     }
 
     #company {
         float: right;
+        margin-right: 20px;
 
     }
 
     #project div,
     #company div {
         white-space: nowrap;
+    }
+
+    #project div, #company div {
+        border-bottom: solid 1px #f2f3f5;
+        padding: 5px;
     }
 
     table {
@@ -76,7 +97,7 @@
     }
 
     table tr:nth-child(2n-1) td {
-        background: #F5F5F5;
+        background: #f5fbff;
     }
 
     table th,
@@ -86,7 +107,6 @@
 
     table th {
         padding: 5px 20px;
-        color: #5D6975;
         border-bottom: 1px solid #C1CED9;
         white-space: nowrap;
         font-weight: normal;
@@ -114,7 +134,7 @@
     }
 
     table td.grand {
-        border-top: 1px solid #5D6975;;
+        border-top: 0px solid #5D6975;;
     }
 
     #notices .notice {
@@ -134,23 +154,29 @@
     }
 </style>
 <div class="clearfix">
-    <h1><?php echo $data['vendor']['company_name'] ?> <span style="font-size: 12px"><?php echo $data['vendor']['company_rif'] ?></span>
-    </h1>
+    <div class="header">
+        <span><?php echo $data['vendor']['company_name'] ?></span>
+        <span> <br><?php echo $data['vendor']['company_rif'] ?></span>
+    </div>
+
     <div id="company" class="clearfix">
         <div><b>Factuara Nº</b>: <?php echo $data['vendor']['invoice_number'] ?></div>
-        <div><?php echo $data['vendor']['company_name'] ?></div>
+        <div><?php echo $data['vendor']['company_rif'] ?></div>
         <div><?php echo $data['vendor']['company_address'] ?></div>
-        <div><?php echo $data['vendor']['company_email'] ?></div>
+        <div><?php echo $data['vendor']['company_phone'] ?></div>
     </div>
     <div id="project">
         <div><span>Razon Social:</span> <?php echo $data['customer']['customer_name'] ?></div>
-        <div><span>RIF:</span>  <?php echo $data['customer']['customer_rif'] ?></div>
+        <div><span>RIF:</span> <?php echo $data['customer']['customer_rif'] ?></div>
         <div><span>Dirección:</span> <?php echo $data['customer']['customer_address'] ?></div>
-        <div><span>Email:</span> <a href="mailto:john@example.com"><?php echo $data['customer']['customer_email'] ?></a></div>
+        <div><span>Email:</span> <a href="mailto:john@example.com"><?php echo $data['customer']['customer_email'] ?></a>
+        </div>
         <div><span>Fecha</span> <?php echo $data['vendor']['date'] ?></div>
     </div>
 </div>
-<div>
+<div style="
+    margin-top: 30px;
+">
     <table>
         <thead>
         <tr>
