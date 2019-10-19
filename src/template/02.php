@@ -161,24 +161,32 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td class="desc"><?php echo $data['item']['title']?>
-            </td>
-            <td class="unit"><?php echo $data['item']['price']?></td>
-            <td class="qty"><?php echo $data['item']['qty']?></td>
-            <td class="total"><?php echo $data['item']['price_total']?></td>
-        </tr>
+        <?php $_total = 0 ?>
+        <?php foreach ($data['item'] as $k) { ?>
+            <tr>
+                <td class="desc"><?php echo $k['title'] ?>
+                </td>
+                <td class="unit"><?php echo $k['price'] ?></td>
+                <td class="qty"><?php echo $k['qty'] ?></td>
+                <td class="total"><?php echo $k['price_total'] ?></td>
+            </tr>
+            <?php
+            $_tmp = str_replace(',', '', $k['price_total']);
+            $_total += floatval($_tmp)
+            ?>
+        <?php } ?>
+
         <tr>
             <td colspan="3">Sub-Total</td>
-            <td class="total"><?php echo $data['item']['price_total']?></td>
+            <td class="total"><?php echo number_format($_total, 2, '.', ','); ?></td>
         </tr>
         <tr>
             <td colspan="3">TAX 12%</td>
-            <td class="total"><?php echo $data['item']['tax']?></td>
+            <td class="total"><?php echo $this->invoice_tax ?></td>
         </tr>
         <tr>
             <td colspan="3" class="grand total">TOTAL</td>
-            <td class="grand total"><?php echo $data['item']['price_total']?></td>
+            <td class="grand total"><?php echo number_format($_total, 2, '.', ','); ?></td>
         </tr>
         </tbody>
     </table>
