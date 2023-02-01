@@ -13,7 +13,7 @@
         }
     },
     "require": {
-        "dompdf/dompdf": "^0.8.3",
+        "dompdf/dompdf": "^2.0.2",
         "fzaninotto/faker": "^1.8"
     }
 }
